@@ -29,7 +29,7 @@ def sms():
     response = twiml.Response()
     response.sms("Congratulations! You deployed the Twilio Hackpack" \
             " for Heroku and Flask.")
-    response.sms(flask.request['Body'])
+    response.sms(request.form['Body'])
     return str(response)
 
 
