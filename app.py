@@ -1,5 +1,5 @@
 import os
-
+import pars
 from flask import Flask
 from flask import render_template
 from flask import url_for
@@ -27,11 +27,18 @@ def voice():
 @app.route('/sms', methods=['GET', 'POST'])
 def sms():
     response = twiml.Response()
-    response.sms("Congratulations! You deployed the Twilio Hackpack" \
-            " for Heroku and Flask.")
-    response.sms(request.form['Body'])
+#    response.sms("Congratulations! You deployed the Twilio Hackpack" \
+#            " for Heroku and Flask.")
+#    response.sms(request.form['Body'])
+    a=pars.parser(request.form['Body'])
+    b=a[0]
+    if (len(b) > 160):
+	response.sms(b[:159])
+	response.sms(b[159:])
+    else:
+	response.sms(b)
+    response.sms(a[1])
     return str(response)
-
 
 # Twilio Client demo template
 @app.route('/client')
