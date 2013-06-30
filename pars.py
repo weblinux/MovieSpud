@@ -12,8 +12,8 @@ def rat(c):
 def parser(url):
 	a=urllib2.urlopen("http://imdbapi.org?type=xml&q="+url)
 	b=a.read()
-	c="Summary:"+summary(b)
-	d="Rating:"+rat(b)+" out of ten"
+	c="Summary: "+summary(b)
+	d="Rating: "+rat(b)+"/10"
 	e=(c,d)
 	return e
 #print(parser("The matrix"))

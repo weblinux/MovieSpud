@@ -31,13 +31,12 @@ def sms():
 #            " for Heroku and Flask.")
 #    response.sms(request.form['Body'])
     a=pars.parser(request.form['Body'])
-    b=a[0]
+    b=a[0]+a[1]
     if (len(b) > 160):
 	response.sms(b[:159])
 	response.sms(b[159:])
     else:
 	response.sms(b)
-    response.sms(a[1])
     return str(response)
 
 # Twilio Client demo template
