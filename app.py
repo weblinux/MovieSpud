@@ -18,8 +18,8 @@ app.config.from_pyfile('local_settings.py')
 @app.route('/voice', methods=['GET', 'POST'])
 def voice():
     response = twiml.Response()
-    response.say("Congratulations! You deployed the Twilio Hackpack" \
-            " for Heroku and Flask.")
+    response.say("I am sorry, we do not have voice recognition. Please 
+text your movie name to this number.")
     return str(response)
 
 
